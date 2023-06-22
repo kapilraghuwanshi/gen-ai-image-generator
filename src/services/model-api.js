@@ -1,5 +1,5 @@
 import axios from "axios";
-import secret from "../../secret";
+import { secret } from "../secret";
 
 const { apiKey } = secret;
 
