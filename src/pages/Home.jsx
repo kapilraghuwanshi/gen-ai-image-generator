@@ -20,7 +20,7 @@ const Home = () => {
     };
 
     fetchData();
-  }, []);
+  }, [searchQuery]);
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -33,8 +33,8 @@ const Home = () => {
         <input type="text" />
         <button onClick={handleSearch}>Generate</button>
       </div>
-      {/* <ImageBox imageResult={imageResult}/>
-      <RecentResults imageResult={imageResult}/> */}
+      <ImageBox imageResult={imageResult}/>
+      <RecentResults imageResult={imageResult}/>
     </div>
   );
 };

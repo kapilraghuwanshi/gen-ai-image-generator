@@ -1,7 +1,12 @@
 import React from "react";
 
 const ImageBox = ({ imageResult }) => {
-  return <div className="row">{{ imageResult }}</div>;
+  return (
+    <div>
+      <div className="row"> </div>
+      <div className="row"> Download</div>
+    </div>
+  );
 };
 
 export default ImageBox;
