@@ -7,15 +7,15 @@ function NavBar() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" width={100} />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+        Image Generator - GenAI
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://www.segmind.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          SendGrid
         </a>
       </header>
     </div>
