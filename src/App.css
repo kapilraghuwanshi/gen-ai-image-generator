@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 4vmin;
+  height: 6vmin;
   pointer-events: none;
 }
 
@@ -38,7 +38,7 @@
 
 .promptInput {
   width: 60vw;
-  height: 25px;
+  height: 30px;
   /* box-shadow: 5px 8px 12px 0 #4eafff88; */
   margin: 5px 10px 15px;
 }
@@ -69,7 +69,7 @@
   box-shadow: 0px 0px 20px 0px #0c4f8688;
   display: flex;
   justify-content: right;
-  margin: 30px auto;
+  margin: 30px auto 10px;
 }
 
 .recentResults {
@@ -80,7 +80,7 @@
 }
 
 button {
-  height: 30px;
+  height: 35px;
   background: black;
   color: white;
 }
@@ -93,42 +93,22 @@ button {
 }
 
 .loaderMessage {
-	position: absolute;
+  position: absolute;
   display: block;
   width: 60%;
-	animation-duration: 20s;
-	animation-timing-function: ease-in-out;
-	animation-iteration-count: infinite;
+  animation-duration: 20s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 
-.loaderMessage{
-	animation-name: anim;
+.recentImageBox {
+  margin: 30px auto 10px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 
-@keyframes anim {
-	0%, 8.3% { left: -100%; opacity: 0; }
-  8.3%,25% { left: 25%; opacity: 1; }
-  33.33%, 100% { left: 110%; opacity: 0; }
-}
-
-
-#progress-bar {
-  background-color: #ddd;
-  height: 20px;
-  margin: 30px 0;
-  position: relative;
-}
-#progress-bar div {
-  background-color: #1d00cf;
-  height: 100%;
-  position: absolute;
-  top: 0;
-}
-#progress-bar span {
-  color: #fff;
-  font-size: 14px;
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
+.recentImage {
+  height: 150px;
+  width: 150px;
 }

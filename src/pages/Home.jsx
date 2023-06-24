@@ -13,27 +13,25 @@ const promptIdeas = [
   "A Shiba Inu dog wearing a beret and black",
   "Enchanted Forest",
   "Underwater Paradise",
-  "City of Tomorrow"
+  "City of Tomorrow",
 ];
 
 const loaderMessages = [
   "Stable Diffusion is a type of latent diffusion model that can generate images from text.",
   "Generative AI (GenAI) is a type of Artificial Intelligence that can create a wide variety of data, such as images, videos, audio, text, and 3D models.",
-  "Artificial intelligence is intelligence demonstrated by machines, as opposed to intelligence displayed by humans or by other animals. Intelligence encompasses the ability to learn and to reason, to generalize, and to infer meaning.",
-  "Deep learning is part of a broader family of machine learning methods, which is based on artificial neural networks with representation learning. Learning can be supervised, semi-supervised or unsupervised.",
+  "Artificial intelligence is intelligence demonstrated by machines, as opposed to intelligence displayed by humans or by other animals.",
+  "Deep learning is part of a broader family of machine learning methods, which is based on artificial neural networks with representation learning. ",
 ];
 
 const Home = () => {
   const [imageResult, setImageResult] = useState("");
   const [promptQuery, setPromptQuery] = useState("");
   const [showLoader, setShowLoader] = useState(false);
-  const [loaderMessage, setLoaderMessage] = useState(loaderMessages[0]);
+  // const [loaderMessage, setLoaderMessage] = useState(loaderMessages[0]);
 
-  useEffect(() => {
-    setInterval(() => {
-      setLoaderMessage(getRandom(loaderMessages));
-    }, 5000);
-  }, [loaderMessage]);
+  // setInterval(() => {
+  //   setLoaderMessage(getRandom(loaderMessages));
+  // }, 5000);
 
   const handleSearch = (event) => {
     setPromptQuery(event.target.value);
@@ -76,7 +74,9 @@ const Home = () => {
     <div className="">
       <NavBar />
       <div className="surpriseBox">
-        <label className="promptLabel">Bring your ideas into life!</label>
+        <label className="promptLabel">
+          Bring your imaginations into reality!
+        </label>
       </div>
       <div>
         <input
@@ -89,18 +89,19 @@ const Home = () => {
         />
         <button onClick={handleGenerate}>Generate</button>
       </div>
-      <div className="">
+      <div>
         <button onClick={handleSurpriseMe}>Surprise Me</button>
       </div>
+      {/* <div className="slideShowMessage">{loaderMessage}</div> */}
 
-      <div className="slideShowMessage">{loaderMessage}</div>
       {showLoader ? (
-        <div>Loading...</div>
+        <div style={{ margin: 40 }}>Loading...</div>
       ) : (
-        <ImageBox promptQuery={promptQuery} imageResult={imageResult} />
+        <>
+          <ImageBox promptQuery={promptQuery} imageResult={imageResult} />
+        </>
       )}
-
-      <RecentResults imageResult={imageResult} />
+      <RecentResults promptQuery={promptQuery} imageResult={imageResult} />
     </div>
   );
 };

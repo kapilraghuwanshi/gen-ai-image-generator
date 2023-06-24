@@ -10,9 +10,13 @@ const ImageBox = (props) => {
           <div className="imageBox">
             <img src={props.imageResult} alt={props.promptQuery} />
           </div>
+          <div>
             <a download={props.promptQuery} href={props.imageResult}>
               Download
             </a>
+          </div>
+
+          <label>⚡️ Blazing fast results</label>
         </div>
       ) : (
         <div></div>
