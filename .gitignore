@@ -7,6 +7,8 @@
 
 /secret.js
 
+.firebase
+.firebaserc
 # testing
 /coverage
 

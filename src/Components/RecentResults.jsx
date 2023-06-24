@@ -10,7 +10,9 @@ const RecentResults = (props) => {
     props.promptQuery &&
     props.imageResult &&
     recentImages &&
-    !recentImages.some((e) => e.name === props.promptQuery)
+    !recentImages.some((e) => {
+      return e.name === props.promptQuery && e.src === props.imageResult;
+    })
   ) {
     if (recentImages.length === 5) {
       recentImages.shift();
@@ -25,7 +27,7 @@ const RecentResults = (props) => {
       });
     }
     localStorage.setItem("genAIRecentKey", JSON.stringify(recentImages));
-  } else if (props.promptQuery && props.imageResult) {
+  } else if (props.promptQuery && props.imageResult && !recentImages) {
     const recentImagesStored = [];
     recentImagesStored.push({
       src: props.imageResult,

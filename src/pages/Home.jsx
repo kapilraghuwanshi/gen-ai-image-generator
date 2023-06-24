@@ -101,7 +101,7 @@ const Home = () => {
           <ImageBox promptQuery={promptQuery} imageResult={imageResult} />
         </>
       )}
-      <RecentResults promptQuery={promptQuery} imageResult={imageResult} />
+      {/* <RecentResults promptQuery={promptQuery} imageResult={imageResult} /> */}
     </div>
   );
 };
