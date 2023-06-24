@@ -7,7 +7,7 @@ function NavBar() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" width={100} />
         <p>
-        Image Generator - GenAI
+         Gen AI - Image Generator
         </p>
         <a
           className="App-link"

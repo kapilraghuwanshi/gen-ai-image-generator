@@ -3,18 +3,37 @@ import ImageBox from "../components/ImageBox";
 import RecentResults from "../components/RecentResults";
 import NavBar from "../components/NavBar";
 import { fetchImages } from "../services/model-api";
+import { getRandom } from "../utilities/utils";
+
+const promptIdeas = [
+  "calico cat wearing a cosmonaut suit, 3d render, pixar style, 8k, high resolution",
+  "An armchair in the shape of an avocado  3d render, pixar style, 8k, high resolution",
+  "A 3D render of an astronaut walking in a green desert",
+  "An abstract oil painting of a river",
+  "A Shiba Inu dog wearing a beret and black",
+  "Enchanted Forest",
+  "Underwater Paradise",
+  "City of Tomorrow"
+];
+
+const loaderMessages = [
+  "Stable Diffusion is a type of latent diffusion model that can generate images from text.",
+  "Generative AI (GenAI) is a type of Artificial Intelligence that can create a wide variety of data, such as images, videos, audio, text, and 3D models.",
+  "Artificial intelligence is intelligence demonstrated by machines, as opposed to intelligence displayed by humans or by other animals. Intelligence encompasses the ability to learn and to reason, to generalize, and to infer meaning.",
+  "Deep learning is part of a broader family of machine learning methods, which is based on artificial neural networks with representation learning. Learning can be supervised, semi-supervised or unsupervised.",
+];
 
 const Home = () => {
-  const [imageResult, setImageResult] = useState(null);
+  const [imageResult, setImageResult] = useState("");
   const [promptQuery, setPromptQuery] = useState("");
+  const [showLoader, setShowLoader] = useState(false);
+  const [loaderMessage, setLoaderMessage] = useState(loaderMessages[0]);
 
-  const promptIdeas = [
-    "calico cat wearing a cosmonaut suit, 3d render, pixar style, 8k, high resolution",
-    "An armchair in the shape of an avocado  3d render, pixar style, 8k, high resolution",
-    "A 3D render of an astronaut walking in a green desert",
-    "An abstract oil painting of a river",
-    "A Shiba Inu dog wearing a beret and black",
-  ];
+  useEffect(() => {
+    setInterval(() => {
+      setLoaderMessage(getRandom(loaderMessages));
+    }, 5000);
+  }, [loaderMessage]);
 
   const handleSearch = (event) => {
     setPromptQuery(event.target.value);
@@ -29,6 +48,8 @@ const Home = () => {
   const fetchData = async () => {
     try {
       console.log("promptQuery", promptQuery);
+      setShowLoader(true);
+
       const imageBlob = await fetchImages(promptQuery);
 
       const fileReaderInstance = new FileReader();
@@ -38,10 +59,11 @@ const Home = () => {
         setImageResult(base64data);
       };
       fileReaderInstance.readAsDataURL(imageBlob);
-
+      setShowLoader(false);
     } catch (error) {
       // Handle error
       console.error("Error fetching images from API:", error);
+      setShowLoader(false);
     }
   };
 
@@ -53,8 +75,8 @@ const Home = () => {
   return (
     <div className="">
       <NavBar />
-      <div>
-        <button onClick={handleSurpriseMe}>Surprise Me</button>
+      <div className="surpriseBox">
+        <label className="promptLabel">Bring your ideas into life!</label>
       </div>
       <div>
         <input
@@ -62,19 +84,25 @@ const Home = () => {
           id="prompt"
           value={promptQuery}
           onChange={handleSearch}
+          placeholder="A plush toy robot sitting against a yellow wall"
+          className="promptInput"
         />
         <button onClick={handleGenerate}>Generate</button>
       </div>
-      <img src={imageResult} width='500' height='200' alt="Image" />
-      <ImageBox imageResult={imageResult} />
+      <div className="">
+        <button onClick={handleSurpriseMe}>Surprise Me</button>
+      </div>
+
+      <div className="slideShowMessage">{loaderMessage}</div>
+      {showLoader ? (
+        <div>Loading...</div>
+      ) : (
+        <ImageBox promptQuery={promptQuery} imageResult={imageResult} />
+      )}
+
       <RecentResults imageResult={imageResult} />
     </div>
   );
 };
 
 export default Home;
-
-export const getRandom = (items) => {
-  const randomIndex = Math.floor(Math.random() * items.length);
-  return items[randomIndex];
-};

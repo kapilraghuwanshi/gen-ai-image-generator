@@ -14,13 +14,12 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #1d00cf;
   min-height: 1vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
   color: white;
 }
 
@@ -35,4 +34,101 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.promptInput {
+  width: 60vw;
+  height: 25px;
+  /* box-shadow: 5px 8px 12px 0 #4eafff88; */
+  margin: 5px 10px 15px;
+}
+
+.surpriseBox {
+  margin: 30px 0px 0px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.promptLabel {
+  animation: typeWriter 5s linear 0s infinite alternate;
+}
+
+@keyframes typeWriter {
+  from {
+    margin-left: -200px;
+  }
+  to {
+    margin-left: 200px;
+  }
+}
+
+.imageBox {
+  width: 450px;
+  height: 450px;
+  box-shadow: 0px 0px 20px 0px #0c4f8688;
+  display: flex;
+  justify-content: right;
+  margin: 30px auto;
+}
+
+.recentResults {
+  display: grid;
+  justify-content: right;
+  margin: auto;
+  padding: 5px;
+}
+
+button {
+  height: 30px;
+  background: black;
+  color: white;
+}
+
+.slideShowMessage {
+  height: 30px;
+  margin-top: 10px;
+  color: grey;
+  font-style: italic;
+}
+
+.loaderMessage {
+	position: absolute;
+  display: block;
+  width: 60%;
+	animation-duration: 20s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+}
+
+.loaderMessage{
+	animation-name: anim;
+}
+
+@keyframes anim {
+	0%, 8.3% { left: -100%; opacity: 0; }
+  8.3%,25% { left: 25%; opacity: 1; }
+  33.33%, 100% { left: 110%; opacity: 0; }
+}
+
+
+#progress-bar {
+  background-color: #ddd;
+  height: 20px;
+  margin: 30px 0;
+  position: relative;
+}
+#progress-bar div {
+  background-color: #1d00cf;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+#progress-bar span {
+  color: #fff;
+  font-size: 14px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
