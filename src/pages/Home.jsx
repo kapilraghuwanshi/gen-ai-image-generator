@@ -40,13 +40,12 @@ const Home = () => {
 
   const handleGenerate = (e) => {
     e.preventDefault();
-    console.log("Generate 👉️", promptQuery);
+    //console.log("Generate 👉️", promptQuery);
     fetchData();
   };
 
   const fetchData = async () => {
     try {
-      console.log("promptQuery", promptQuery);
       setShowLoader(true);
 
       const imageBlob = await fetchImages(
@@ -77,7 +76,6 @@ const Home = () => {
   };
 
   const handleAvailOptions = (option) => {
-    console.log("handleAvailOptions", option);
     setPromptQuery(option);
   };
 

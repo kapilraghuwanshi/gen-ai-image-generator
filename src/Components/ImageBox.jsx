@@ -1,7 +1,7 @@
 import React from "react";
 
 const ImageBox = (props) => {
-  console.log("ImageBox", props.promptQuery, props.imageResult);
+  // console.log("ImageBox", props.promptQuery, props.imageResult);
 
   return (
     <>

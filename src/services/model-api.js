@@ -34,7 +34,7 @@ export const fetchImages = async (
     const response = await axios.request(options);
     // convert raw blob to actual image format
     const imageBlob = new Blob([response.data], { type: "image/jpeg" });
-    console.log(response, imageBlob);
+    // console.log(response, imageBlob);
     return imageBlob;
   } catch (error) {
     console.error("Error while fecthing Gen AI model API", error);
