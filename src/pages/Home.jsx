@@ -1,41 +1,41 @@
 import React, { useState, useEffect } from "react";
 import ImageBox from "../components/ImageBox";
-import RecentResults from "../components/RecentResults";
 import NavBar from "../components/NavBar";
 import { fetchImages } from "../services/model-api";
-import { getRandom } from "../utilities/utils";
+import { getRandom, loaderMessages, promptIdeas } from "../utilities/utils";
 import ChooseResults from "../components/ChooseResults";
-
-const promptIdeas = [
-  "calico cat wearing a cosmonaut suit, 3d render, pixar style, 8k, high resolution",
-  "An armchair in the shape of an avocado  3d render, pixar style, 8k, high resolution",
-  "A 3D render of an astronaut walking in a green desert",
-  "An abstract oil painting of a river",
-  "A Shiba Inu dog wearing a beret and black",
-  "Enchanted Forest",
-  "Underwater Paradise",
-  "City of Tomorrow",
-];
-
-const loaderMessages = [
-  "Stable Diffusion is a type of latent diffusion model that can generate images from text.",
-  "Generative AI (GenAI) is a type of Artificial Intelligence that can create a wide variety of data, such as images, videos, audio, text, and 3D models.",
-  "Artificial intelligence is intelligence demonstrated by machines, as opposed to intelligence displayed by humans or by other animals.",
-  "Deep learning is part of a broader family of machine learning methods, which is based on artificial neural networks with representation learning. ",
-];
+import RecentResults from "../components/RecentResults";
 
 const Home = () => {
+  const [showLoader, setShowLoader] = useState(false);
   const [imageResult, setImageResult] = useState("");
   const [promptQuery, setPromptQuery] = useState("");
-  const [showLoader, setShowLoader] = useState(false);
-  // const [loaderMessage, setLoaderMessage] = useState(loaderMessages[0]);
+  const [radioValue, setRadioValue] = useState("20");
+  const [dropDownValue, setDropDownValue] = useState("DDIM");
+  const [seedValue, setSeedValue] = useState(17123564234);
+  const [loaderMessage, setLoaderMessage] = useState(loaderMessages[0]);
 
-  // setInterval(() => {
-  //   setLoaderMessage(getRandom(loaderMessages));
-  // }, 5000);
+  useEffect(() => {
+    const loaderInterval = setInterval(() => {
+      setLoaderMessage(getRandom(loaderMessages));
+    }, 5000);
+    return () => {
+      clearInterval(loaderInterval);
+    };
+  }, [loaderMessage]);
 
   const handleSearch = (event) => {
     setPromptQuery(event.target.value);
+  };
+
+  const handleChange = (event) => {
+    if (event.target.name === "radio") {
+      setRadioValue(event.target.value);
+    } else if (event.target.name === "dropdown") {
+      setDropDownValue(event.target.value);
+    } else {
+      setSeedValue(event.target.value);
+    }
   };
 
   const handleGenerate = (e) => {
@@ -49,7 +49,12 @@ const Home = () => {
       console.log("promptQuery", promptQuery);
       setShowLoader(true);
 
-      const imageBlob = await fetchImages(promptQuery);
+      const imageBlob = await fetchImages(
+        promptQuery,
+        seedValue,
+        dropDownValue,
+        radioValue
+      );
 
       const fileReaderInstance = new FileReader();
       fileReaderInstance.onload = () => {
@@ -91,13 +96,62 @@ const Home = () => {
           placeholder="A plush toy robot sitting against a yellow wall"
           className="promptInput"
         />
-        <button onClick={handleGenerate}>Generate</button>
-      </div>
-      <div>
         <button onClick={handleSurpriseMe}>Surprise Me</button>
       </div>
-
-      {/* <div className="slideShowMessage">{loaderMessage}</div> */}
+      <div className="formBox">
+        <div className="formValue">
+          <label>Scheduler</label>
+          <select name="dropdown" value={dropDownValue} onChange={handleChange}>
+            <option value="Euler">Euler</option>
+            <option value="LMS">LMS</option>
+            <option value="Heun">Heun</option>
+            <option value="DDPM">DDPM</option>
+          </select>
+        </div>
+        <div className="formValue">
+          Seed
+          <label>
+            <input
+              type="radio"
+              name="radio"
+              value="20"
+              checked={radioValue === "20"}
+              onChange={handleChange}
+            />
+            20
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="radio"
+              value="30"
+              onChange={handleChange}
+            />
+            30
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="radio"
+              value="50"
+              onChange={handleChange}
+            />
+            50
+          </label>
+        </div>
+        <div className="formValue">
+          <label>Steps</label>
+          <input
+            type="number"
+            name="input"
+            value={seedValue}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
+      <div>
+        <button onClick={handleGenerate}>Generate the Image</button>
+      </div>
 
       {showLoader ? (
         <div style={{ margin: 40 }}>Loading...</div>
@@ -107,7 +161,10 @@ const Home = () => {
         </>
       )}
       <ChooseResults onSelect={handleAvailOptions} />
+
       <RecentResults promptQuery={promptQuery} imageResult={imageResult} />
+      <div className="slideShowMessage">{loaderMessage}</div>
+      <div className="footer">Powered by SegMind</div>
     </div>
   );
 };

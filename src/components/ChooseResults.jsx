@@ -7,7 +7,6 @@ import image5 from "../images/Celebration of Life.jpeg";
 
 const ChooseResults = ({ onSelect }) => {
   const handleClick = (value) => {
-    console.log("handleClick", value);
     onSelect(value);
   };
 
@@ -21,7 +20,7 @@ const ChooseResults = ({ onSelect }) => {
 
   return (
     <>
-      <div style={{ marginTop: 30 }}>Choose from the below ideas</div>
+      <div style={{ marginTop: 20 }}>Choose from the below ideas</div>
       <div className="recentImageBox">
         {availableOptions.map((value) => (
           <>

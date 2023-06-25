@@ -7,7 +7,7 @@ function NavBar() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" width={100} />
         <p>
-         Gen AI - Image Generator
+         GenAI - Image Generator
         </p>
         <a
           className="App-link"
@@ -15,7 +15,7 @@ function NavBar() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          SendGrid
+          SegMind
         </a>
       </header>
     </div>

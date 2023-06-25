@@ -3,7 +3,12 @@ import { secret } from "../secret";
 
 const { apiKey } = secret;
 
-export const fetchImages = async (promptCall) => {
+export const fetchImages = async (
+  promptCall,
+  seedValue,
+  dropDownValue,
+  radioValue
+) => {
   const options = {
     method: "POST",
     url: "https://api.segmind.com/v1/sd2.1-txt2img",
@@ -14,12 +19,12 @@ export const fetchImages = async (promptCall) => {
     responseType: "arraybuffer",
     data: {
       prompt: promptCall,
+      seed: seedValue,
+      scheduler: dropDownValue,
+      num_inference_steps: radioValue,
       negative_prompt: "NONE",
       samples: "1",
-      scheduler: "DDIM",
-      num_inference_steps: "20",
       guidance_scale: "7.5",
-      seed: "17123564234",
       strength: "1",
       shape: 512,
     },
