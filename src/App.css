@@ -102,13 +102,14 @@ button {
 }
 
 .recentImageBox {
-  margin: 30px auto 10px;
   display: flex;
-  justify-content: start;
-  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .recentImage {
+padding: 10px;
   height: 150px;
   width: 150px;
 }

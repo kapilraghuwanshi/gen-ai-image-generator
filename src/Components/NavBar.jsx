@@ -1,4 +1,4 @@
-import logo from '../../src/logo.svg';
+import logo from '../images/logo.svg';
 import '../App.css';
 
 function NavBar() {

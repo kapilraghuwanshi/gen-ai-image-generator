@@ -4,6 +4,7 @@ import RecentResults from "../components/RecentResults";
 import NavBar from "../components/NavBar";
 import { fetchImages } from "../services/model-api";
 import { getRandom } from "../utilities/utils";
+import ChooseResults from "../components/ChooseResults";
 
 const promptIdeas = [
   "calico cat wearing a cosmonaut suit, 3d render, pixar style, 8k, high resolution",
@@ -70,13 +71,16 @@ const Home = () => {
     setPromptQuery(surprisePrompt);
   };
 
+  const handleAvailOptions = (option) => {
+    console.log("handleAvailOptions", option);
+    setPromptQuery(option);
+  };
+
   return (
     <div className="">
       <NavBar />
       <div className="surpriseBox">
-        <label className="promptLabel">
-          Bring your imaginations into reality!
-        </label>
+        <label className="">Bring your imaginations into reality!</label>
       </div>
       <div>
         <input
@@ -92,6 +96,7 @@ const Home = () => {
       <div>
         <button onClick={handleSurpriseMe}>Surprise Me</button>
       </div>
+
       {/* <div className="slideShowMessage">{loaderMessage}</div> */}
 
       {showLoader ? (
@@ -101,7 +106,8 @@ const Home = () => {
           <ImageBox promptQuery={promptQuery} imageResult={imageResult} />
         </>
       )}
-      {/* <RecentResults promptQuery={promptQuery} imageResult={imageResult} /> */}
+      <ChooseResults onSelect={handleAvailOptions} />
+      <RecentResults promptQuery={promptQuery} imageResult={imageResult} />
     </div>
   );
 };

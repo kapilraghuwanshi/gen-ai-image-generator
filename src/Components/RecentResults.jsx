@@ -1,52 +1,61 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 const RecentResults = (props) => {
   console.log("RecentResults", props.promptQuery, props.imageResult);
-
+  
   const recentImages = JSON.parse(localStorage.getItem("genAIRecentKey"));
   console.log("recentImages", recentImages);
+  const [recentImagesStored, setRecentImagesStored] = useState([]);
 
-  if (
-    props.promptQuery &&
-    props.imageResult &&
-    recentImages &&
-    !recentImages.some((e) => {
-      return e.name === props.promptQuery && e.src === props.imageResult;
-    })
-  ) {
-    if (recentImages.length === 5) {
-      recentImages.shift();
-      recentImages.push({
+  useEffect(() => {
+
+
+    if (
+      props.promptQuery &&
+      props.imageResult &&
+      recentImages &&
+      !recentImages.some((e) => e.name === props.promptQuery && e.src === props.imageResult)
+    ) {
+      if (recentImages.length === 5) {
+        recentImages.shift();
+        recentImages.push({
+          src: props.imageResult,
+          name: props.promptQuery,
+        });
+      } else {
+        recentImages.push({
+          src: props.imageResult,
+          name: props.promptQuery,
+        });
+      }
+      localStorage.setItem("genAIRecentKey", JSON.stringify(recentImages));
+      setRecentImagesStored(recentImages);
+    } else if (props.promptQuery && props.imageResult && !recentImages) {
+      recentImagesStored.push({
         src: props.imageResult,
         name: props.promptQuery,
       });
-    } else {
-      recentImages.push({
-        src: props.imageResult,
-        name: props.promptQuery,
-      });
+      localStorage.setItem(
+        "genAIRecentKey",
+        JSON.stringify(recentImagesStored)
+      );
+      setRecentImagesStored(recentImagesStored);
     }
-    localStorage.setItem("genAIRecentKey", JSON.stringify(recentImages));
-  } else if (props.promptQuery && props.imageResult && !recentImages) {
-    const recentImagesStored = [];
-    recentImagesStored.push({
-      src: props.imageResult,
-      name: props.promptQuery,
-    });
-    localStorage.setItem("genAIRecentKey", JSON.stringify(recentImagesStored));
-  }
+ 
+  }, [props.promptQuery, props.imageResult]);
 
   return (
     <>
-      {recentImages ? (
+      <div style={{ marginTop: 30}}>Recent</div>
+      {recentImagesStored ? (
         <div className="recentImageBox">
-          <label>Recent</label>
-          {recentImages.map((value) => (
+          {recentImagesStored.map((value) => (
             <>
               <div key={value}>
                 <img className="recentImage" src={value.src} alt={value.name} />
+                <div >{value.name}</div>
               </div>
-              <div style={{ width: 30 }}>{value.name}</div>
+              
             </>
           ))}
         </div>
