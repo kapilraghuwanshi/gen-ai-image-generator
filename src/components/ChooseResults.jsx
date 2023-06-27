@@ -25,7 +25,7 @@ const ChooseResults = ({ onSelect }) => {
         {availableOptions.map((value) => (
           <>
             <div key={value} onClick={() => handleClick(value.name)}>
-              <img className="recentImage" src={value.src} alt={value.name} />
+              <img className="recentImage" src={value.src} alt={value.name} loading="lazy"/>
               <div>{value.name}</div>
             </div>
           </>

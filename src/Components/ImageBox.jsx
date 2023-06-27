@@ -8,7 +8,7 @@ const ImageBox = (props) => {
       {props.imageResult ? (
         <div>
           <div className="imageBox">
-            <img src={props.imageResult} alt={props.promptQuery} />
+            <img src={props.imageResult} alt={props.promptQuery} loading="lazy"/>
           </div>
           <div>
             <a download={props.promptQuery} href={props.imageResult}>

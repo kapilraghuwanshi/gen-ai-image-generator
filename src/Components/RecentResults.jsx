@@ -64,6 +64,7 @@ const RecentResults = (props) => {
                     className="recentImage"
                     src={value.src}
                     alt={value.name}
+                    loading="lazy"
                   />
                   <div className="imageLabel">{value.name}</div>
                 </div>
