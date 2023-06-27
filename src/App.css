@@ -87,7 +87,7 @@ button {
 
 .slideShowMessage {
   height: 30px;
-  margin: 20px 10px 50px 10px;;
+  margin: 20px 10px 50px 10px;
   color: grey;
   font-style: italic;
 }
@@ -112,6 +112,13 @@ button {
   padding: 10px;
   height: 150px;
   width: 150px;
+}
+
+.imageLabel {
+  white-space: nowrap;
+  width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .formBox {

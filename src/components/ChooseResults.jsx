@@ -24,7 +24,7 @@ const ChooseResults = ({ onSelect }) => {
       <div className="recentImageBox">
         {availableOptions.map((value) => (
           <>
-            <div key={value.name} onClick={() => handleClick(value.name)}>
+            <div key={value} onClick={() => handleClick(value.name)}>
               <img className="recentImage" src={value.src} alt={value.name} />
               <div>{value.name}</div>
             </div>

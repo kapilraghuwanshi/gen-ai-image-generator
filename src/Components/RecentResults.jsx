@@ -55,6 +55,7 @@ const RecentResults = (props) => {
             <>
               <div key={value}>
                 <img className="recentImage" src={value.src} alt={value.name} />
+                <div className="imageLabel">{value.name}</div>
               </div>
             </>
           ))}

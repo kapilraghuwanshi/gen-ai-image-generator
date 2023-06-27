@@ -98,7 +98,7 @@ const Home = () => {
       </div>
       <div className="formBox">
         <div className="formValue">
-          <label>Scheduler</label>
+          <label>Scheduler &nbsp;</label>
           <select name="dropdown" value={dropDownValue} onChange={handleChange}>
             <option value="Euler">Euler</option>
             <option value="LMS">LMS</option>
@@ -107,7 +107,7 @@ const Home = () => {
           </select>
         </div>
         <div className="formValue">
-           Steps
+          Steps
           <label>
             <input
               type="radio"
@@ -138,7 +138,7 @@ const Home = () => {
           </label>
         </div>
         <div className="formValue">
-          <label>Seed</label>
+          <label>Seed &nbsp;</label>
           <input
             type="number"
             name="input"
