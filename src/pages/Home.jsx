@@ -18,7 +18,7 @@ const Home = () => {
   useEffect(() => {
     const loaderInterval = setInterval(() => {
       setLoaderMessage(getRandom(loaderMessages));
-    }, 5000);
+    }, 3000);
     return () => {
       clearInterval(loaderInterval);
     };
@@ -107,7 +107,7 @@ const Home = () => {
           </select>
         </div>
         <div className="formValue">
-          Seed
+           Steps
           <label>
             <input
               type="radio"
@@ -138,7 +138,7 @@ const Home = () => {
           </label>
         </div>
         <div className="formValue">
-          <label>Steps</label>
+          <label>Seed</label>
           <input
             type="number"
             name="input"
@@ -159,7 +159,6 @@ const Home = () => {
         </>
       )}
       <ChooseResults onSelect={handleAvailOptions} />
-
       <RecentResults promptQuery={promptQuery} imageResult={imageResult} />
       <div className="slideShowMessage">{loaderMessage}</div>
       <div className="footer">Powered by SegMind</div>
