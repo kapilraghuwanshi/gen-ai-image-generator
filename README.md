@@ -7,7 +7,7 @@ Features:
 4) Recent history of the generated images, can be picked again.
 5) Download the generated images.
 
-- It uses latest React hooks to fetch the SegMind text2Img API.
+- It uses latest React hooks to fetch the SegMind text2Img API. (Create your own API from https://www.SegMind.com)
 - It has been deployed on Firebase.
 - Recent history has been stored on the localStorage.
 
