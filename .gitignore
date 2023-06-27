@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 
-/secret.js
+secret.js
 
 .firebase
 .firebaserc
