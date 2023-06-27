@@ -3,12 +3,19 @@ import historyIcon from "../images/history.png";
 
 const RecentResults = (props) => {
   //console.log("RecentResults", props.promptQuery, props.imageResult);
-
   const recentImages = JSON.parse(localStorage.getItem("genAIRecentKey"));
   //console.log("recentImages", recentImages);
   const [recentImagesStored, setRecentImagesStored] = useState([]);
 
+  const handleClick = (value) => {
+    props.onSelect(value);
+  };
+
   useEffect(() => {
+    if (recentImages) {
+      setRecentImagesStored(recentImages);
+    }
+
     if (
       props.promptQuery &&
       props.imageResult &&
@@ -52,7 +59,7 @@ const RecentResults = (props) => {
           <div className="recentImageBox">
             {recentImagesStored.map((value) => (
               <>
-                <div key={value}>
+                <div key={value.src} onClick={() => handleClick(value.name)}>
                   <img
                     className="recentImage"
                     src={value.src}

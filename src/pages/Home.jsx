@@ -152,14 +152,18 @@ const Home = () => {
       </div>
 
       {showLoader ? (
-        <div style={{ margin: 40 }}>Loading...</div>
+        <div style={{ margin: 40 }}>Blazing fast results... ⚡️⚡️⚡️</div>
       ) : (
         <>
           <ImageBox promptQuery={promptQuery} imageResult={imageResult} />
         </>
       )}
       <ChooseResults onSelect={handleAvailOptions} />
-      <RecentResults promptQuery={promptQuery} imageResult={imageResult} />
+      <RecentResults
+        promptQuery={promptQuery}
+        imageResult={imageResult}
+        onSelect={handleAvailOptions}
+      />
       <div className="slideShowMessage">{loaderMessage}</div>
       <div className="footer">Powered by SegMind</div>
     </div>

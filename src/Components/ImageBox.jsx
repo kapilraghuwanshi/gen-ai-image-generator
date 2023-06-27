@@ -15,8 +15,6 @@ const ImageBox = (props) => {
               Download
             </a>
           </div>
-
-          <label>⚡️ Blazing fast results</label>
         </div>
       ) : (
         <div></div>
