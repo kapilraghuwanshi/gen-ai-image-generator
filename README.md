@@ -14,7 +14,7 @@ Tools
 
 Furthur Scope for devs:
 1) Create an image slideshow with recent history of generated images.
-2) Build create APIs to post images on your servers, and fetch from those APIs and show on the app.
+2) Build REST APIs to post images on your servers, and fetch from those APIs and show on the app.
 
 ![App Snapshot](GenAI-Image-Generator.png)
 
