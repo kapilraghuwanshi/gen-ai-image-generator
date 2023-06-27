@@ -13,9 +13,7 @@ const RecentResults = (props) => {
       props.promptQuery &&
       props.imageResult &&
       recentImages &&
-      !recentImages.some(
-        (e) => e.name === props.promptQuery && e.src === props.imageResult
-      )
+      !recentImages.some((local) => local.src === props.imageResult)
     ) {
       if (recentImages.length === 5) {
         recentImages.shift();
@@ -46,20 +44,26 @@ const RecentResults = (props) => {
 
   return (
     <>
-      <div style={{ marginTop: 30 }}>
-        Recent <img src={historyIcon} width={15} height={15} />{" "}
-      </div>
-      {recentImagesStored ? (
-        <div className="recentImageBox">
-          {recentImagesStored.map((value) => (
-            <>
-              <div key={value}>
-                <img className="recentImage" src={value.src} alt={value.name} />
-                <div className="imageLabel">{value.name}</div>
-              </div>
-            </>
-          ))}
-        </div>
+      {recentImagesStored.length > 0 ? (
+        <>
+          <div style={{ marginTop: 30 }}>
+            Recent <img src={historyIcon} width={15} height={15} />{" "}
+          </div>
+          <div className="recentImageBox">
+            {recentImagesStored.map((value) => (
+              <>
+                <div key={value}>
+                  <img
+                    className="recentImage"
+                    src={value.src}
+                    alt={value.name}
+                  />
+                  <div className="imageLabel">{value.name}</div>
+                </div>
+              </>
+            ))}
+          </div>
+        </>
       ) : (
         <div></div>
       )}
