@@ -1,27 +1,28 @@
-# Simple React App to demonstrate GenAI Text2Image APIs powered by SegMind
+## Simple React App to demonstrate GenAI Text2Image APIs powered by SegMind
 
-Features:
+## Features:
 1) Generate the image from the prompt with various parameters.
 2) Surprise Me option to get the idea instantly, if you're falling short ;).
 3) Few previously generated images to pick from.
 4) Recent history of the generated images, can be picked again.
 5) Download the generated images.
 
-Tools
+## Tools:
 1) Uses latest React hooks to fetch the SegMind text2Img API. (Create your own API from https://www.SegMind.com)
 2) Deployed on Firebase.
 3) Recent history has been stored on the localStorage.
 
-Furthur Scope for devs:
-1) Create an image slideshow with recent history of generated images.
-2) Build REST APIs to post images on your servers, and fetch from those APIs and show on the app.
+## Furthur Scope for devs:
+1) Reverse the order for recent history images.
+2) Create an Image slideshow of recent history of generated images.
+3) Build REST APIs to post images on your own developed servers and database (free tiers), and fetch those APIs and show on the app.
 
+## App Snapshot:
 ![App Snapshot](GenAI-Image-Generator.png)
 
 ## Available Scripts
 
 In the project directory, you can run:
-
 ### `npm start`
 
 Runs the app in the development mode.\
