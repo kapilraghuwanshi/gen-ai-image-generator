@@ -6,6 +6,7 @@
 3) Few previously generated images to pick from.
 4) Recent history of the generated images, can be picked again.
 5) Download the generated images.
+6) Responsive web app.
 
 ## Tools:
 1) Uses latest React hooks to fetch the SegMind text2Img API. (Create your own API from https://www.SegMind.com)
@@ -22,7 +23,8 @@
 
 ## Available Scripts
 
-In the project directory, you can run:
+Inside the project directory in respective command line, you can run:
+### `npm install` [only once]
 ### `npm start`
 
 Runs the app in the development mode.\
