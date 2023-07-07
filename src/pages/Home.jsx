@@ -8,7 +8,7 @@ import RecentResults from "../components/RecentResults";
 
 const Home = () => {
   const [showLoader, setShowLoader] = useState(false);
-  const [imageResult, setImageResult] = useState("");
+  const [imageResult, setImageResult] = useState(null);
   const [promptQuery, setPromptQuery] = useState("");
   const [radioValue, setRadioValue] = useState("20");
   const [dropDownValue, setDropDownValue] = useState("DDIM");
