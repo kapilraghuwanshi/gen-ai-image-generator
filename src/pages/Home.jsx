@@ -40,7 +40,6 @@ const Home = () => {
 
   const handleGenerate = (e) => {
     e.preventDefault();
-    //console.log("Generate 👉️", promptQuery);
     fetchData();
   };
 
@@ -58,7 +57,6 @@ const Home = () => {
       const fileReaderInstance = new FileReader();
       fileReaderInstance.onload = () => {
         let base64data = fileReaderInstance.result;
-        // console.log("base64data image", base64data);
         setImageResult(base64data);
       };
       fileReaderInstance.readAsDataURL(imageBlob);

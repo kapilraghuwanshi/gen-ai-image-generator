@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import historyIcon from "../images/history.png";
 
 const RecentResults = (props) => {
-  //console.log("RecentResults", props.promptQuery, props.imageResult);
   const recentImages = JSON.parse(localStorage.getItem("genAIRecentKey"));
-  //console.log("recentImages", recentImages);
   const [recentImagesStored, setRecentImagesStored] = useState([]);
 
   const handleClick = (value) => {
