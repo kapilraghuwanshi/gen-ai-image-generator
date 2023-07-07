@@ -32,7 +32,7 @@ export const fetchImages = async (
 
   try {
     const response = await axios.request(options);
-    // convert raw blob to actual image format
+    // convert raw blob as ArrayBuffer to an image blob with MIME type
     const imageBlob = new Blob([response.data], { type: "image/jpeg" });
     // console.log(response, imageBlob);
     return imageBlob;

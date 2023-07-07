@@ -19,6 +19,7 @@ const Home = () => {
     const loaderInterval = setInterval(() => {
       setLoaderMessage(getRandom(loaderMessages));
     }, 3000);
+    // to avoid memory leak
     return () => {
       clearInterval(loaderInterval);
     };
@@ -55,10 +56,12 @@ const Home = () => {
       );
 
       const fileReaderInstance = new FileReader();
+      // This event will fire when the image Blob is fully loaded and ready to be displayed
       fileReaderInstance.onload = () => {
         let base64data = fileReaderInstance.result;
         setImageResult(base64data);
       };
+      // Use the readAsDataURL() method of the FileReader instance to read the image Blob and convert it into a data URL
       fileReaderInstance.readAsDataURL(imageBlob);
       setShowLoader(false);
     } catch (error) {
@@ -78,10 +81,10 @@ const Home = () => {
   };
 
   return (
-    <div className="">
+    <div>
       <NavBar />
       <div className="surpriseBox">
-        <label className="">Bring your imaginations into reality!</label>
+        <label>Bring your imaginations into reality!</label>
       </div>
       <div>
         <input
