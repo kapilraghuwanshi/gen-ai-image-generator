@@ -18,6 +18,12 @@
 2) Create an Image slideshow of recent history of generated images.
 3) Build REST APIs to post images on your own developed servers and database (free tiers), and fetch those APIs and show on the app.
 
+1) Reverse the order for recent history images.
+2) Create an Image slideshow of recent history of generated images.
+3) Build REST APIs to post recent images on your own developed servers and database (Render, Vercel, MongoDB Atlas free tiers), and fetch those from APIs and show on the app.
+4) Add i18n localization to the project using react-i18next.
+5) Write Unit Test cases using @testing-library/react.
+
 ## App Snapshot:
 ![App Snapshot](GenAI-Image-Generator.png)
 
