@@ -1,3 +1,3 @@
 export const secret = {
-  "apiKey": "SG_afd3b47fb91bc66a"
+  "apiKey": "SG_e223471534b9e8bd"
 }

@@ -11,7 +11,7 @@ export const fetchImages = async (
 ) => {
   const options = {
     method: "POST",
-    url: "https://api.segmind.com/v1/sd2.1-txt2img",
+    url: "https://api.segmind.com/v1/sdxl1.0-txt2img",
     headers: {
       "x-api-key": `${apiKey}`,
       "Content-Type": "application/json",
