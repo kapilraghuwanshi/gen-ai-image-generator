@@ -8,6 +8,11 @@
 5) Download the generated images.
 6) Responsive web app.
 
+## Articles/Blogs:
+https://medium.com/bitsrc/building-a-generative-ai-application-in-2024-b318064a454b
+
+https://dev.to/techygeeky/create-your-own-genai-image-generator-app-like-midjourney-or-dalle-2-lej
+
 ## Tools:
 1) Uses latest React hooks to fetch the SegMind text2Img API. (Create your own API from https://www.SegMind.com)
 2) Deployed on Firebase.
